@@ -1,0 +1,23 @@
+LogUdp:
+  Name: dc1
+  Terminal:
+    OutputLevel: 0
+  File:
+    SavePath: ./log
+    OutputLevel: 0
+  UDP:
+    SendAddrPort: 127.0.0.1:10000
+    OutputLevel: 0
+
+Component:
+  - Class: YSSLM::node::component::drive::DriveComponent2
+    Name: Mydrive_8_num
+    Read:
+      AngleMessage: 
+        - Channel: AngleMessage 
+          UDP_AddrPort: 127.0.0.1:10002
+        - Channel: AngleMessage
+          UDP_AddrPort:  192.168.222.129:10002
+    Write:
+    ConfigFile: config/startup.yaml
+    Open: true
